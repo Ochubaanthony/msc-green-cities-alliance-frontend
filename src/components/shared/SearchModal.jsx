@@ -3,7 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import PropTypes from "prop-types";
 
-export default function Modal({ isOpen, setIsOpen }) {
+export default function SearchModal({ isOpen, setIsOpen }) {
   const searchButtonRef = useRef(null);
 
   return (
@@ -64,7 +64,7 @@ export default function Modal({ isOpen, setIsOpen }) {
   );
 }
 
-Modal.propTypes = {
+SearchModal.propTypes = {
   /**
    *
    * You can declare that a prop is a specific JS primitive. By default, these

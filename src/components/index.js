@@ -4,7 +4,7 @@
 //  * **/
 
 export { default as Navigation } from "./header/Navigation";
-// export { default as Hero } from "./header/Hero";
+export { default as Hero } from "./header/Hero";
 
 // /***
 //  *
@@ -23,7 +23,7 @@ export { default as Navigation } from "./header/Navigation";
 //  * **/
 // export { default as Testimonials } from "./shared/Testimonials";
 export { default as PreLoader } from "./shared/PreLoader";
-export { default as Modal } from "./shared/Modal";
+export { default as SearchModal } from "./shared/SearchModal";
 
 /***
  *

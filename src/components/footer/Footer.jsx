@@ -1,16 +1,18 @@
 import { Fragment, useEffect, useState } from "react";
 import {
   FaArrowUp,
+  FaCcAmex,
+  FaCcMastercard,
   FaFacebook,
   FaGithub,
   FaLinkedin,
+  FaPaypal,
   FaTwitter,
 } from "react-icons/fa";
+import { FaCcVisa } from "react-icons/fa6";
 
 // Data
 import { data } from "../assets/data/constants";
-
-import paymentLogo from "../assets/img/payment.png";
 
 const Footer = () => {
   // Back to top button
@@ -203,11 +205,24 @@ const Footer = () => {
                 <p>Email: {data?.project_email}</p>
                 <p>Phone: {data?.project_phone}</p>
                 <p>Payment Accepted</p>
-                <img
-                  src={paymentLogo}
-                  className="img-fluid"
-                  alt="Payment Logo"
-                />
+                <div className="flex items-center gap-2">
+                  <FaCcVisa
+                    size={40}
+                    className="text-accent hover:text-secondary transition-all duration-500 ease-in-out"
+                  />
+                  <FaPaypal
+                    size={40}
+                    className="text-accent hover:text-secondary transition-all duration-500 ease-in-out"
+                  />
+                  <FaCcMastercard
+                    size={40}
+                    className="text-accent hover:text-secondary transition-all duration-500 ease-in-out"
+                  />
+                  <FaCcAmex
+                    size={40}
+                    className="text-accent hover:text-secondary transition-all duration-500 ease-in-out"
+                  />
+                </div>
               </div>
             </div>
           </div>

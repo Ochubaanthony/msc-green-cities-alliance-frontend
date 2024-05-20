@@ -6,4 +6,6 @@ export const data = {
   project_phone: "+0123 4567 8910",
   project_email: " example@gmail.com",
   project_address: "1429 Netus Rd, NY 48247",
+  hero_subtitle: "100% Organic Foods",
+  hero_title: "Organic Veggies & Fruits Foods",
 };

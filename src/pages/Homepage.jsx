@@ -1,13 +1,13 @@
 import { Fragment } from "react";
-// import {
-//   Products,
-//   FeaturedProducts,
-//   Services,
-//   Hero,
-//   Organics,
-//   Banner,
-//   Testimonials,
-// } from "../components";
+import {
+  //   Products,
+  //   FeaturedProducts,
+  //   Services,
+  Hero,
+  //   Organics,
+  //   Banner,
+  //   Testimonials,
+} from "../components";
 
 import { Head, HeadContent } from "../portals";
 
@@ -29,8 +29,8 @@ const Homepage = () => {
           <meta name="distribution" content="Global" />
         </HeadContent>
       </Head>
-      {/* <Hero />
-      <Services />
+      <Hero />
+      {/*  <Services />
       <Products />
       <FeaturedProducts />
       <Organics />
