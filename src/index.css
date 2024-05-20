@@ -1,4 +1,10 @@
 @tailwind base;
+
+:root {
+  --bs-primary: #ffffff;
+  --bs-accent: #ffb524;
+  --bs-secondary: #81c408;
+}
 /*** Spinner Start ***/
 #spinner {
   opacity: 0;
@@ -256,12 +262,13 @@
   content: "";
   width: 35px;
   height: 35px;
-  background: var(--bs-secondary);
+  background: var(--bs-accent);
   position: absolute;
   bottom: -10px;
   transform: translate(-50%);
   transform: rotate(45deg);
-  background: var(--bs-secondary);
+  background: var(--bs-accent);
+  /* background: #ffb524; */
 }
 /*** featurs End ***/
 
@@ -598,7 +605,7 @@ form .product-search-btn {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  /* height: 100vh; */
   width: 100%;
 }
 @tailwind components;
