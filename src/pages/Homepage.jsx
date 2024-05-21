@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import {
   Products,
-  //   FeaturedProducts,
+  FeaturedProducts,
   Services,
   Hero,
   // Organics,
@@ -32,6 +32,7 @@ const Homepage = () => {
       <Hero />
       <Services />
       <Products />
+      <FeaturedProducts />
       {/*  
       <Products />
       <FeaturedProducts />
