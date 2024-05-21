@@ -4,6 +4,9 @@
   --bs-primary: #ffffff;
   --bs-accent: #ffb524;
   --bs-secondary: #81c408;
+  --bs-shade: #45595b;
+  --bs-offwhite: #a2acad;
+  --color: 240, 240, 240;
 }
 /*** Spinner Start ***/
 #spinner {
@@ -315,12 +318,24 @@ form .product-search-btn {
 /*** service End ***/
 
 /*** Fruits Start ***/
-.fruite .tab-class .nav-item a.active {
-  background: var(--bs-secondary) !important;
+.fruite .tab-class .nav-item button {
+  color: var(--bs-shade) !important;
+  background-color: rgba(var(--color), 0.6);
+  padding: 10px 8px;
+  display: flex !important;
+  border-radius: 50px;
+}
+.fruite .tab-class .nav-item button:hover {
+  color: var(--bs-accent) !important;
+  background-color: rgba(var(--color), 1) !important;
+  transition: all 0.1s ease-in-out;
+}
+.fruite .tab-class .nav-item button.active {
+  background: var(--bs-accent) !important;
 }
 
-.fruite .tab-class .nav-item a.active span {
-  color: var(--bs-white) !important;
+.fruite .tab-class .nav-item button.active span {
+  color: var(--bs-primary) !important;
 }
 
 .fruite .fruite-categorie .fruite-name {

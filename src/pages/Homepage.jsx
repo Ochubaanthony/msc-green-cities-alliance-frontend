@@ -1,10 +1,10 @@
 import { Fragment } from "react";
 import {
-  //   Products,
+  Products,
   //   FeaturedProducts,
   Services,
   Hero,
-  //   Organics,
+  // Organics,
   //   Banner,
   //   Testimonials,
 } from "../components";
@@ -31,6 +31,7 @@ const Homepage = () => {
       </Head>
       <Hero />
       <Services />
+      <Products />
       {/*  
       <Products />
       <FeaturedProducts />
