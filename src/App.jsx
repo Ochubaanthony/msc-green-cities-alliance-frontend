@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 
-// import { HomePage, Products, ProductDetail, ErrorPage } from "./pages";
-import { Homepage } from "./pages";
-
 import { UserLayout } from "./layouts";
+import { Homepage, ErrorPage } from "./pages";
+// import { HomePage, Products, ProductDetail, ErrorPage } from "./pages";
+
 const App = () => {
   return (
     <main>
@@ -13,7 +13,9 @@ const App = () => {
           {/* <Route path="products" element={<Products />} /> */}
           {/* <Route path="products/:id" element={<ProductDetail />} /> */}
         </Route>
-        {/* <Route path="*" element={<ErrorPage />} /> */}
+        <Route element={<UserLayout />}>
+          <Route path="*" element={<ErrorPage />} />
+        </Route>
       </Routes>
     </main>
   );
