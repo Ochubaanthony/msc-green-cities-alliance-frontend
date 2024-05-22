@@ -18,7 +18,6 @@ const Featured = () => {
                 <div className="service-item bg-accent rounded-lg border border-accent">
                   <img
                     src={img1}
-                    // src="../assets/img/featur-1.jpg"
                     className="img-fluid rounded-t-lg w-full"
                     alt=""
                   />
@@ -40,7 +39,6 @@ const Featured = () => {
                 <div className="service-item bg-shade rounded-lg border border-shade">
                   <img
                     src={img2}
-                    // src="../assets/img/featur-2.jpg"
                     className="img-fluid rounded-t-lg w-full"
                     alt=""
                   />
@@ -62,7 +60,6 @@ const Featured = () => {
                 <div className="service-item bg-secondary rounded-lg border border-secondary">
                   <img
                     src={img3}
-                    // src="../assets/img/featur-3.jpg"
                     className="img-fluid rounded-t-lg w-full"
                     alt=""
                   />
