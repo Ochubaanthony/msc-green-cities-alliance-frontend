@@ -7,7 +7,7 @@ const Banner = () => {
       {/*  Banner Section Start */}
       <div className="w-full banner bg-accent mt-10 py-10">
         <div className="container mx-auto py-5">
-          <div className="flex flex-col lg:flex-row  gap-4 items-center justify-between  px-5">
+          <div className="flex flex-col-reverse lg:flex-row  gap-4 items-center justify-between  px-5">
             <div className="">
               <div className="py-5">
                 <h1 className="text-white font-bold text-5xl lg:text-7xl">
