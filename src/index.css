@@ -455,7 +455,7 @@ form .product-search-btn {
 
 /*** Banner Section Start ***/
 .banner .banner-btn:hover {
-  background: var(--bs-primary);
+  background: var(--bs-secondary);
 }
 /*** Banner Section End ***/
 
