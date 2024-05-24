@@ -4,7 +4,7 @@ import {
   FeaturedProducts,
   Services,
   Hero,
-  // Organics,
+  Organics,
   Banner,
   //   Testimonials,
 } from "../components";
@@ -33,6 +33,7 @@ const Homepage = () => {
       <Services />
       <Products />
       <FeaturedProducts />
+      <Organics />
       <Banner />
       {/*  
       <Products />

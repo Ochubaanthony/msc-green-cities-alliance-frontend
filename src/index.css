@@ -380,7 +380,8 @@ form .product-search-btn {
 }
 
 .vesitable .vesitable-item:hover {
-  box-shadow: 0 0 55px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  /* box-shadow: 0 0 55px rgba(0, 0, 0, 0.4); */
 }
 
 .vesitable .vesitable-item .vesitable-img {
