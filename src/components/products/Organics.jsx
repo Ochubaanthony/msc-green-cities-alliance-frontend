@@ -5,20 +5,12 @@ import "@splidejs/react-splide/css";
 
 import { data } from "../assets/data/constants";
 import { useWindowSize } from "../../hooks";
+import { slidesPerPageSize } from "../../utils";
 
 let slide_data = data;
 
 const Organics = () => {
   const windowSize = useWindowSize();
-
-  const getNumberOfSlidesAccordingToPageSize = () => {
-    if (windowSize < 768) {
-      return 1;
-    } else if (windowSize < 1024) {
-      return 2;
-    }
-    return 3;
-  };
 
   const slideOptions = {
     type: "loop",
@@ -26,9 +18,12 @@ const Organics = () => {
     width: "100%",
     gap: "1rem",
     autoplay: true,
-    perPage: getNumberOfSlidesAccordingToPageSize(),
+    perPage: slidesPerPageSize(windowSize),
   };
 
+  const handleVote = (product_id) => {
+    console.log("product_id", product_id);
+  };
   return (
     <Fragment>
       {/* Vesitable Shop Start */}
