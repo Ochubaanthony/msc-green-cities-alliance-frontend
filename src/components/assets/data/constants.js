@@ -1,3 +1,8 @@
+import image1 from "../img/best-product-1.jpg";
+import image2 from "../img/best-product-2.jpg";
+import image3 from "../img/best-product-3.jpg";
+import image4 from "../img/best-product-4.jpg";
+
 export const data = {
   project_title: "G C A",
   project_slogan: "Your Eco-friendly promoter",
@@ -8,4 +13,42 @@ export const data = {
   project_address: "1429 Netus Rd, NY 48247",
   hero_subtitle: "100% Organic Foods",
   hero_title: "Organic Veggies & Fruits Foods",
+  product_data: [
+    {
+      name: "Orange",
+      title: "Organic Veggies & Fruits Foods",
+      description: "",
+      image: image1,
+      link: "#",
+      type: "vegetable",
+      buttonText: "Shop Now",
+    },
+    {
+      name: "Parsley",
+      title: "Organic Veggies & Fruits Foods",
+      description: "",
+      image: image2,
+      link: "#",
+      type: "vegetable",
+      buttonText: "Shop Now",
+    },
+    {
+      name: "Banana",
+      title: "Organic Veggies & Fruits Foods",
+      description: "",
+      image: image3,
+      link: "#",
+      type: "vegetable",
+      buttonText: "Shop Now",
+    },
+    {
+      name: "Parsley",
+      title: "Organic Veggies & Fruits Foods",
+      description: "",
+      image: image4,
+      link: "#",
+      type: "vegetable",
+      buttonText: "Shop Now",
+    },
+  ],
 };
