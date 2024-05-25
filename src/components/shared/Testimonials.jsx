@@ -26,11 +26,11 @@ const Testimonials = () => {
       <div className="columns-1 testimonial py-10 px-2 lg:px-5 mb-10">
         <div className="py-5">
           <div className="testimonial-header text-center space-y-5 mb-10">
-            <h4 className="text-secondary text-3xl font-bold">
-              Our Testimonial
+            <h4 className="text-secondary text-2xl lg:text-3xl font-bold">
+              Testimonials
             </h4>
-            <h1 className="text-5xl mb-5 text-shade font-bold">
-              Our Client Saying!
+            <h1 className="text-4xl lg:text-5xl mb-5 text-shade font-bold">
+              What our residents are saying!
             </h1>
           </div>
           <Splide
