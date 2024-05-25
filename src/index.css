@@ -114,7 +114,7 @@
 }
 
 .topbar .top-link a small:hover {
-  color: var(--bs-secondary) !important;
+  color: var(--bs-accent) !important;
   transition: 0.5s;
 }
 

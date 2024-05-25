@@ -1,6 +1,14 @@
 import { Fragment, useEffect, useState } from "react";
-import { FaBars, FaSearch, FaRegUserCircle } from "react-icons/fa";
+import {
+  FaBars,
+  FaSearch,
+  FaRegUserCircle,
+  FaMapMarkerAlt,
+  FaEnvelope,
+} from "react-icons/fa";
 import { IoHeartCircleOutline, IoLogOutOutline } from "react-icons/io5";
+import { Link, NavLink } from "react-router-dom";
+
 import PropTypes from "prop-types";
 
 import { PreLoader } from "../";
@@ -47,79 +55,103 @@ const Nav = () => {
           isScrolled ? "shadow" : ""
         }`}
       >
-        <div className="container mx-auto w-full topbar bg-secondary hidden lg:block">
-          <div className="flex justify-between">
+        <div className="columns-1 mx-auto w-[90%] h-[50px] topbar bg-secondary hidden lg:flex lg:items-center lg:justify-center">
+          <div className="flex w-full justify-between items-center">
             <div className="top-info ps-2">
-              <small className="me-3">
-                <i className="fas fa-map-marker-alt me-2 text-secondary"></i>{" "}
-                <a href="#" className="text-white hover:text-accent">
+              <small className="me-3 flex items-center text-white">
+                <FaMapMarkerAlt className="me-2 text-inherit" />
+                <p href="#" className="text-inherit">
                   {data?.project_address}
-                </a>
+                </p>
               </small>
-              <small className="me-3">
-                <i className="fas fa-envelope me-2 text-secondary"></i>
-                <a
+              <small className="me-3 flex items-center text-white hover:text-accent transition-all duration-500 ease-in-out">
+                <FaEnvelope className="me-2 text-inherit" />
+                <Link
                   href={`mailto:${data?.project_email}`}
-                  className="text-white hover:text-accent"
+                  className="text-inherit"
                 >
                   {data?.project_email}
-                </a>
+                </Link>
               </small>
             </div>
-            <div className="top-link pe-2">
-              <a
+            <div className="top-link  pe-2">
+              <NavLink
                 href={`${data?.privacy_policy}`}
                 className="text-white hover:text-accent"
               >
-                <small className="text-white mx-2 ">Privacy Policy</small>/
-              </a>
-              <a
+                <small className="text-inherit mx-2 ">Privacy Policy /</small>
+              </NavLink>
+              <NavLink
                 href={`${data?.terms_and_conditions}`}
                 className="text-white hover:text-accent"
               >
-                <small className="text-white mx-2 ">Terms of Use</small>/
-              </a>
-              <a
+                <small className="text-inherit mx-2 ">Terms of Use /</small>
+              </NavLink>
+              <NavLink
                 href={`${data?.sales_and_refund}`}
                 className="text-white hover:text-accent"
               >
-                <small className="text-white ms-2 ">Sales and Refunds</small>
-              </a>
+                <small className="text-inherit ms-2 ">Sales and Refunds</small>
+              </NavLink>
             </div>
           </div>
         </div>
         <nav
-          className="container mx-auto flex justify-between items-center px-5 h-20 lg:px-0"
+          className="columns-1 flex justify-between items-center px-5 h-20 lg:px-14"
           role="navigation"
         >
-          <a href="/" className="mt-5 lg:mt-0">
+          <NavLink href="/" className="mt-5 lg:mt-0">
             <h1 className="font-bold text-4xl text-secondary">G C A</h1>
-          </a>
+          </NavLink>
           <div className="hidden lg:flex justify-between gap-10 items-center text-shade">
-            <a
-              href="/"
-              className="nav-item nav-link active hover:text-secondary"
+            <NavLink
+              to="/"
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? "pending"
+                  : isActive
+                  ? "active nav-item nav-link text-accent font-semibold"
+                  : "nav-item nav-link active hover:text-secondary font-semibold"
+              }
             >
               Home
-            </a>
-            <a
-              href="shop.html"
-              className="nav-item nav-link hover:text-secondary"
+            </NavLink>
+            <NavLink
+              to="/products"
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? "pending"
+                  : isActive
+                  ? "active nav-item nav-link text-accent font-semibold"
+                  : "nav-item nav-link active hover:text-secondary font-semibold"
+              }
             >
               Products
-            </a>
-            <a
-              href="about.html"
-              className="nav-item nav-link hover:text-secondary"
+            </NavLink>
+            <NavLink
+              to="/about"
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? "pending"
+                  : isActive
+                  ? "active nav-item nav-link text-accent font-semibold"
+                  : "nav-item nav-link active hover:text-secondary font-semibold"
+              }
             >
               About Us
-            </a>
-            <a
-              href="contact.html"
-              className="nav-item nav-link hover:text-secondary"
+            </NavLink>
+            <NavLink
+              to="/contact"
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? "pending"
+                  : isActive
+                  ? "active nav-item nav-link text-accent font-semibold"
+                  : "nav-item nav-link active hover:text-secondary font-semibold"
+              }
             >
               Contact
-            </a>
+            </NavLink>
           </div>
           <div className="hidden lg:flex justify-around" id="navbarCollapse">
             <div className="flex gap-5 justify-evenly  items-center p-3">
@@ -133,17 +165,18 @@ const Nav = () => {
                 <div>
                   <IoHeartCircleOutline size={40} className="text-secondary" />
                 </div>
-                <span
-                  className="absolute bg-accent rounded-full flex items-center justify-center text-dark p"
+                <div
+                  className="absolute bg-accent rounded-full flex items-center justify-center text-dark text-sm"
                   style={{
                     top: "-5px",
-                    left: "15px",
-                    height: "20px",
-                    minWidth: "20px",
+                    left: "20px",
+                    height: "24px",
+                    minWidth: "24px",
+                    padding: "2px",
                   }}
                 >
-                  3
-                </span>
+                  <span>30</span>
+                </div>
               </a>
               <div className="flex gap-4 items-center">
                 <a href="./login.html" className="my-auto" id="loginBt">
@@ -192,16 +225,60 @@ const MobileMenu = ({ toggleModal, toggleMobileMenu }) => {
       <div className="">
         <ul className="flex flex-col gap-6 text-shade">
           <li className="hover:text-secondary transition-all duration-500 ease-in-out">
-            <a href="/">Home</a>
+            <NavLink
+              to="/"
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? "pending"
+                  : isActive
+                  ? "active nav-item nav-link text-accent font-semibold"
+                  : "nav-item nav-link active hover:text-secondary font-semibold"
+              }
+            >
+              Home
+            </NavLink>
           </li>
           <li className="hover:text-secondary transition-all duration-500 ease-in-out">
-            <a href="shop.html">Products</a>
+            <NavLink
+              to="/products"
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? "pending"
+                  : isActive
+                  ? "active nav-item nav-link text-accent font-semibold"
+                  : "nav-item nav-link active hover:text-secondary font-semibold"
+              }
+            >
+              Products
+            </NavLink>
           </li>
           <li className="hover:text-secondary transition-all duration-500 ease-in-out">
-            <a href="about.html">About Us</a>
+            <NavLink
+              to="/about"
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? "pending"
+                  : isActive
+                  ? "active nav-item nav-link text-accent font-semibold"
+                  : "nav-item nav-link active hover:text-secondary font-semibold"
+              }
+            >
+              About Us
+            </NavLink>
           </li>
           <li className="hover:text-secondary transition-all duration-500 ease-in-out">
-            <a href="contact.html">Contact</a>
+            <NavLink
+              to="/contact"
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? "pending"
+                  : isActive
+                  ? "active nav-item nav-link text-accent font-semibold"
+                  : "nav-item nav-link active hover:text-secondary font-semibold"
+              }
+            >
+              Contact
+            </NavLink>
           </li>
         </ul>
         <div className="flex gap-5 justify-evenly  items-center p-3">
@@ -214,26 +291,47 @@ const MobileMenu = ({ toggleModal, toggleMobileMenu }) => {
           >
             <FaSearch size={20} className="text-secondary" />
           </button>
-          <a href="cart.html" id="fav" className="relative">
+          <NavLink
+            to="/favourites"
+            id="fav"
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "pending"
+                : isActive
+                ? " text-secondary font-semibold relative"
+                : " text-secondary font-semibold relative"
+            }
+          >
             <div>
-              <IoHeartCircleOutline size={40} className="text-secondary" />
+              <IoHeartCircleOutline size={40} className="text-inherit" />
             </div>
             <span
-              className="absolute bg-accent rounded-full flex items-center justify-center text-dark p"
+              className="absolute bg-accent hover:text-primary rounded-full flex items-center justify-center text-shade text-xs"
               style={{
                 top: "-5px",
-                left: "15px",
-                height: "20px",
-                minWidth: "20px",
+                left: "20px",
+                height: "24px",
+                minWidth: "24px",
+                padding: "2px",
               }}
             >
-              3
+              30
             </span>
-          </a>
+          </NavLink>
           <div className="flex gap-4 items-center">
-            <a href="./login.html" className="my-auto" id="loginBt">
+            <NavLink
+              href="./login"
+              id="loginBt"
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? "pending"
+                  : isActive
+                  ? "active nav-item nav-link text-accent font-semibold my-auto"
+                  : "nav-item nav-link active hover:text-secondary font-semibold my-auto"
+              }
+            >
               <FaRegUserCircle size={30} className="text-secondary" />
-            </a>
+            </NavLink>
             <button className="my-auto btn" id="logoutBt">
               <IoLogOutOutline size={30} className="text-accent" />
             </button>
