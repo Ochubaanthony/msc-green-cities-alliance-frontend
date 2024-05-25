@@ -2,6 +2,9 @@ import image1 from "../img/best-product-1.jpg";
 import image2 from "../img/best-product-2.jpg";
 import image3 from "../img/best-product-3.jpg";
 import image4 from "../img/best-product-4.jpg";
+// Users
+//  img/testimonial-1.jpg
+import user1 from "../img/testimonial-1.jpg";
 
 export const data = {
   project_title: "G C A",
@@ -49,6 +52,48 @@ export const data = {
       link: "#",
       type: "vegetable",
       buttonText: "Shop Now",
+    },
+  ],
+  user_testimonials: [
+    {
+      name: "John Doe",
+      title: "CEO",
+      photo: user1,
+      rating: 5,
+      comment:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor or",
+    },
+    {
+      name: "Jane Doe",
+      title: "CEO",
+      photo: user1,
+      rating: 3,
+      comment:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor or",
+    },
+    {
+      name: "Mathew Doe",
+      title: "CEO",
+      photo: user1,
+      rating: 4,
+      comment:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor or",
+    },
+    {
+      name: "Lewis Doe",
+      title: "CEO",
+      photo: user1,
+      rating: 5,
+      comment:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor or",
+    },
+    {
+      name: "Cleo Doe",
+      title: "CEO",
+      photo: user1,
+      rating: 2,
+      comment:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor ornare, nisi nunc aliquet nisi, quis aliquet nisi nunc euismod, nisi quis porttitor or",
     },
   ],
 };
