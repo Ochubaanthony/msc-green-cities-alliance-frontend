@@ -192,8 +192,6 @@ const Nav = () => {
             <button
               className="navbar-toggler py-2 px-3"
               type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarCollapse"
               onClick={toggleMobileMenu}
             >
               <FaBars className="text-secondary" size={20} />
@@ -234,6 +232,7 @@ const MobileMenu = ({ toggleModal, toggleMobileMenu }) => {
                   ? "active nav-item nav-link text-accent font-semibold"
                   : "nav-item nav-link active hover:text-secondary font-semibold"
               }
+              onClick={toggleMobileMenu}
             >
               Home
             </NavLink>
@@ -248,6 +247,7 @@ const MobileMenu = ({ toggleModal, toggleMobileMenu }) => {
                   ? "active nav-item nav-link text-accent font-semibold"
                   : "nav-item nav-link active hover:text-secondary font-semibold"
               }
+              onClick={toggleMobileMenu}
             >
               Products
             </NavLink>
@@ -262,6 +262,7 @@ const MobileMenu = ({ toggleModal, toggleMobileMenu }) => {
                   ? "active nav-item nav-link text-accent font-semibold"
                   : "nav-item nav-link active hover:text-secondary font-semibold"
               }
+              onClick={toggleMobileMenu}
             >
               About Us
             </NavLink>
@@ -301,6 +302,7 @@ const MobileMenu = ({ toggleModal, toggleMobileMenu }) => {
                 ? " text-secondary font-semibold relative"
                 : " text-secondary font-semibold relative"
             }
+            onClick={toggleMobileMenu}
           >
             <div>
               <IoHeartCircleOutline size={40} className="text-inherit" />
@@ -320,7 +322,7 @@ const MobileMenu = ({ toggleModal, toggleMobileMenu }) => {
           </NavLink>
           <div className="flex gap-4 items-center">
             <NavLink
-              href="./login"
+              to="/login"
               id="loginBt"
               className={({ isActive, isPending }) =>
                 isPending
@@ -329,6 +331,7 @@ const MobileMenu = ({ toggleModal, toggleMobileMenu }) => {
                   ? "active nav-item nav-link text-accent font-semibold my-auto"
                   : "nav-item nav-link active hover:text-secondary font-semibold my-auto"
               }
+              onClick={toggleMobileMenu}
             >
               <FaRegUserCircle size={30} className="text-secondary" />
             </NavLink>
