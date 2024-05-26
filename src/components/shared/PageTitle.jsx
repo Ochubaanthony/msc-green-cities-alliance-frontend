@@ -6,7 +6,9 @@ export default function PageTitle({ title, location }) {
     <Fragment>
       {/*  Single Page Header start - */}
       <div className="columns-1 w-full page-header py-10 space-y-5">
-        <h1 className="text-center text-primary text-5xl font-bold">{title}</h1>
+        <h1 className="text-center text-primary text-3xl lg:text-5xl font-bold">
+          {title}
+        </h1>
         <ol className="breadcrumb flex justify-center gap-5 mb-0 text-lg text-secondary font-light">
           <li className="">
             <a href="#">Home</a>

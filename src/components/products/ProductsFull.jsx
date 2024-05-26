@@ -1,5 +1,8 @@
 import { Fragment, useState } from "react";
 import { FaThumbsUp } from "react-icons/fa";
+
+import { AdjustmentsVerticalIcon } from "@heroicons/react/24/outline";
+
 import {
   Select,
   SelectContent,
@@ -20,7 +23,6 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { Button } from "@/components/ui/button";
 
 import { useProductCategory } from "../../hooks";
 
@@ -185,47 +187,68 @@ const ProductsFull = () => {
   return (
     <Fragment>
       {/*   Fruits Shop Start */}
-      <div className="flex justify-center items-start w-full fruite py-5">
-        <div className="lg:flex justify-center items-center lg:px-14 mx-auto fruite py-5">
-          <div className="tab-class text-center">
-            <div className="flex flex-col lg:flex-row  justify-between items-center gap-4">
-              <div className="text-start text-3xl font-semibold text-shade mb-5">
-                <h1>Eco-friendly Products</h1>
-              </div>
+      <div className="flex flex-col w-full fruite py-5">
+        {/* <div className="flex justify-center items-start w-full fruite py-5"> */}
+        {/* <div className="text-start text-3xl font-semibold text-shade mb-5 px-5 lg:px-10">
+          <h1>Eco-friendly Products</h1>
+        </div> */}
 
-              <div className="flex gap-2 m-5">
-                {/* Sort by price range */}
-                <Select onValueChange={(e) => filterProductsByPrice(e)}>
-                  <SelectTrigger className="lg:w-[280px] bg-primary">
-                    <SelectValue defaultValue="" placeholder="Price Range" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectLabel>Price Range</SelectLabel>
-                      <SelectItem value="asc">Low to High</SelectItem>
-                      <SelectItem value="desc">High to Low</SelectItem>
-                    </SelectGroup>
-                    <SelectSeparator />
-                  </SelectContent>
-                </Select>
-                {/* Sort by Category */}
-                <Select onValueChange={(e) => filterProducts(e)}>
-                  <SelectTrigger className="lg:w-[280px] bg-primary">
-                    <SelectValue placeholder="Select Category" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectLabel>Categories</SelectLabel>
-                      <SelectItem value={"all"}>All</SelectItem>
-                      {uniqueProductCategory?.map((prod, index) => (
-                        <SelectItem key={index + 1} value={prod.product_type}>
-                          {prod?.product_type}
-                        </SelectItem>
-                      ))}
-                    </SelectGroup>
-                    <SelectSeparator />
-                  </SelectContent>
-                </Select>
+        <div className="lg:flex justify-center items-start lg:px-14 mx-auto fruite py-5 w-full">
+          {/* Sidebar */}
+          <div className="col-xl-3">
+            <div className="input-group w-100 mx-auto d-flex">
+              <input
+                type="search"
+                className="form-control p-3"
+                placeholder="keywords"
+                aria-describedby="search-icon-1"
+              />
+              <span id="search-icon-1" className="input-group-text p-3">
+                <i className="fa fa-search"></i>
+              </span>
+            </div>
+          </div>
+          <div className="tab-class text-center w-full">
+            <div className="flex flex-col lg:flex-row  justify-between items-center gap-4 bg-secondary/20 p-3 rounded-lg mb-5 mx-5 lg:mx-0">
+              <div className="flex justify-between items-center w-full gap-2 m-5 p-3">
+                <div className="hidden lg:flex justify-center items-center text-shade h-8 w-8 lg:h-10 lg:w-10">
+                  <AdjustmentsVerticalIcon className="text-shade" />
+                </div>
+
+                <div className="flex w-full justify-between lg:justify-end gap-2 items-center">
+                  {/* Sort by price range */}
+                  <Select onValueChange={(e) => filterProductsByPrice(e)}>
+                    <SelectTrigger className="w-full lg:w-[280px] bg-primary text-shade">
+                      <SelectValue defaultValue="" placeholder="Price Range" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup className="text-shade">
+                        <SelectLabel>Price Range</SelectLabel>
+                        <SelectItem value="asc">Low to High</SelectItem>
+                        <SelectItem value="desc">High to Low</SelectItem>
+                      </SelectGroup>
+                      <SelectSeparator />
+                    </SelectContent>
+                  </Select>
+                  {/* Sort by Category */}
+                  <Select onValueChange={(e) => filterProducts(e)}>
+                    <SelectTrigger className="w-full lg:w-[280px] bg-primary text-shade">
+                      <SelectValue placeholder="Select Category" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup className="text-shade">
+                        <SelectLabel>Categories</SelectLabel>
+                        <SelectItem value={"all"}>All</SelectItem>
+                        {uniqueProductCategory?.map((prod, index) => (
+                          <SelectItem key={index + 1} value={prod.product_type}>
+                            {prod?.product_type}
+                          </SelectItem>
+                        ))}
+                      </SelectGroup>
+                      <SelectSeparator />
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
             </div>
             <div className="tab-content">
@@ -233,7 +256,8 @@ const ProductsFull = () => {
                 <div className="row g-4">
                   <div className="columns-1">
                     {/* Main Products Card List */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 row gap-4 px-5 lg:px-0">
+                    <div className="grid grid-cols-1 md:grid-cols-3 row gap-4 px-5 lg:px-0">
+                      {/* <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 row gap-4 px-5 lg:px-0"> */}
                       {products &&
                         products
                           ?.filter((prodCategory) => {
