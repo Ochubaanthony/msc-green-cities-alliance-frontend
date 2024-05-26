@@ -166,15 +166,12 @@ const products = [
 
 const ProductsFull = () => {
   const [category, setCategory] = useState("");
-  const [key, setKey] = useState(+new Date());
-  const [value, setValue] = useState(undefined);
   const [sort, setSort] = useState("asc");
 
   const uniqueProductCategory = useProductCategory(products, "product_type");
 
   const filterProducts = (category) => {
     console.log(category);
-    setValue(undefined);
     setCategory(category);
   };
   const filterProductsByPrice = (sortType) => {
@@ -212,20 +209,14 @@ const ProductsFull = () => {
                   </SelectContent>
                 </Select>
                 {/* Sort by Category */}
-                <Select
-                  key={key}
-                  value={value}
-                  onValueChange={(e) => filterProducts(e)}
-                >
+                <Select onValueChange={(e) => filterProducts(e)}>
                   <SelectTrigger className="lg:w-[280px] bg-primary">
-                    <SelectValue
-                      defaultValue=""
-                      placeholder="Select category"
-                    />
+                    <SelectValue placeholder="Select Category" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
                       <SelectLabel>Categories</SelectLabel>
+                      <SelectItem value={"all"}>All</SelectItem>
                       {uniqueProductCategory?.map((prod, index) => (
                         <SelectItem key={index + 1} value={prod.product_type}>
                           {prod?.product_type}
@@ -233,17 +224,6 @@ const ProductsFull = () => {
                       ))}
                     </SelectGroup>
                     <SelectSeparator />
-                    <Button
-                      className="w-full px-2 bg-secondary/20 hover:bg-secondary/40"
-                      size="sm"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setValue(undefined);
-                        setKey(+new Date());
-                      }}
-                    >
-                      All
-                    </Button>
                   </SelectContent>
                 </Select>
               </div>
@@ -256,9 +236,14 @@ const ProductsFull = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 row gap-4 px-5 lg:px-0">
                       {products &&
                         products
-                          ?.filter((prodCategory) =>
-                            prodCategory?.product_type.includes(category)
-                          )
+                          ?.filter((prodCategory) => {
+                            if (category === "all") {
+                              return prodCategory;
+                            }
+                            return prodCategory?.product_type.includes(
+                              category
+                            );
+                          })
                           .slice(0, 8)
                           .sort((a, b) => {
                             if (sort === "asc") {
