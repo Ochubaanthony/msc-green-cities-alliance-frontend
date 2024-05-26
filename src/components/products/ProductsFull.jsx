@@ -193,7 +193,7 @@ const ProductsFull = () => {
           <div className="tab-class text-center">
             <div className="flex flex-col lg:flex-row  justify-between items-center gap-4">
               <div className="text-start text-3xl font-semibold text-shade mb-5">
-                <h1>Our Organic Products</h1>
+                <h1>Eco-friendly Products</h1>
               </div>
 
               <div className="flex gap-2 m-5">
