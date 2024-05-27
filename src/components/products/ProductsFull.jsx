@@ -1,5 +1,5 @@
 import { Fragment, useState } from "react";
-import { FaThumbsUp } from "react-icons/fa";
+import { FaSearch, FaThumbsUp } from "react-icons/fa";
 
 import { AdjustmentsVerticalIcon } from "@heroicons/react/24/outline";
 
@@ -23,6 +23,8 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { Input } from "@/components/ui/input";
+import { Slider } from "@/components/ui/slider";
 
 import { useProductCategory } from "../../hooks";
 
@@ -169,6 +171,7 @@ const products = [
 const ProductsFull = () => {
   const [category, setCategory] = useState("");
   const [sort, setSort] = useState("asc");
+  const [price, setPrice] = useState(0);
 
   const uniqueProductCategory = useProductCategory(products, "product_type");
 
@@ -184,28 +187,83 @@ const ProductsFull = () => {
     alert(prodID);
   };
 
+  const handlePriceFilter = (e) => {
+    console.log(e);
+    setPrice(e[0]);
+  };
+
   return (
     <Fragment>
       {/*   Fruits Shop Start */}
       <div className="flex flex-col w-full fruite py-5">
         {/* <div className="flex justify-center items-start w-full fruite py-5"> */}
-        {/* <div className="text-start text-3xl font-semibold text-shade mb-5 px-5 lg:px-10">
-          <h1>Eco-friendly Products</h1>
-        </div> */}
 
-        <div className="lg:flex justify-center items-start lg:px-14 mx-auto fruite py-5 w-full">
+        <div className="lg:flex justify-center items-start lg:px-14 mx-auto fruite py-5 w-full gap-2">
           {/* Sidebar */}
-          <div className="col-xl-3">
-            <div className="input-group w-100 mx-auto d-flex">
-              <input
+          <div className="columns-1 rounded-lg lg:w-1/3 lg:min-h-screen px-5 lg:px-0 mx-5 lg:mx-0 my-5 lg:my-0">
+            {/* Search Bar */}
+            <div className="flex input-group w-full relative columns-2 p-2">
+              <Input
                 type="search"
-                className="form-control p-3"
-                placeholder="keywords"
+                placeholder="Search Company"
                 aria-describedby="search-icon-1"
+                className="form-control p-3 columns-span-2 pr-10"
               />
-              <span id="search-icon-1" className="input-group-text p-3">
-                <i className="fa fa-search"></i>
-              </span>
+              <button
+                id="search-icon-1"
+                className="bg-secondary text-primary hover:bg-accent transition-all duration-500 ease-in-out input-group-text p-3 absolute right-2 rounded-r-md"
+              >
+                <FaSearch />
+              </button>
+            </div>
+            {/* Category List */}
+            <div className="hidden lg:block p-2 my-5">
+              <div className="mb-3">
+                <h4 className="text-3xl text-shade">Categories</h4>
+                <ul className="list-unstyled fruite-categorie text-secondary">
+                  {uniqueProductCategory?.map((prod, index) => (
+                    <li key={index + 1} value={prod.product_type}>
+                      <div className="flex justify-between fruite-name">
+                        <a href="#">{prod?.product_type}</a>
+                        <span className="text-shade">
+                          ({Object.entries(prod?.product_type).length})
+                        </span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Price Slider */}
+            <div className="my-5">
+              <div className="mb-3">
+                <h4 className="mb-2 text-xl font-semibold text-shade">
+                  Price Range
+                </h4>
+                <div>
+                  <div className="flex gap-5 items-center justify-between">
+                    <p className="text-shade">Start</p>
+                    <Slider
+                      defaultValue={[0, 100]}
+                      max={100}
+                      step={1}
+                      onValueChange={(e) => handlePriceFilter(e)}
+                    />
+                    <p className="text-shade">£{price}</p>
+                  </div>
+                  <div className="flex gap-5 items-center justify-between">
+                    <p className="text-shade">End</p>
+                    <Slider
+                      defaultValue={[0, 100]}
+                      max={100}
+                      step={1}
+                      onValueChange={(e) => handlePriceFilter(e)}
+                    />
+                    <p className="text-shade">£{price}</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div className="tab-class text-center w-full">

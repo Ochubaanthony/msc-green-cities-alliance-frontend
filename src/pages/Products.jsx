@@ -23,7 +23,6 @@ const About = () => {
       </Head>
 
       <PageTitle title="Eco-friendly Products" location="Products" />
-      {/* <h2 className="text-center ">Welcome to Products</h2> */}
       <ProductsFull />
     </Fragment>
   );
