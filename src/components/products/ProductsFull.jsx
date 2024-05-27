@@ -1,5 +1,5 @@
 import { Fragment, useState } from "react";
-import { FaSearch, FaThumbsUp } from "react-icons/fa";
+import { FaSearch, FaStar, FaThumbsUp } from "react-icons/fa";
 
 import { AdjustmentsVerticalIcon } from "@heroicons/react/24/outline";
 
@@ -33,6 +33,10 @@ import img2 from "../assets/img/best-product-2.jpg";
 import img3 from "../assets/img/best-product-3.jpg";
 import img4 from "../assets/img/best-product-4.jpg";
 import img5 from "../assets/img/best-product-5.jpg";
+import featImage from "../assets/img/featur-1.jpg";
+import featImage2 from "../assets/img/featur-2.jpg";
+import featImage3 from "../assets/img/featur-3.jpg";
+import bannerImage from "../assets/img/banner-fruits.jpg";
 
 const products = [
   {
@@ -168,10 +172,35 @@ const products = [
   },
 ];
 
+const featuredProducts = [
+  {
+    product_name: "Big Orange",
+    discount_price: 5,
+    product_price: 10,
+    rating: 2,
+    product_img: featImage,
+  },
+  {
+    product_name: "Big Orange",
+    discount_price: 30,
+    product_price: 50,
+    rating: 4,
+    product_img: featImage2,
+  },
+  {
+    product_name: "Big Orange",
+    discount_price: 70,
+    product_price: 100,
+    rating: 5,
+    product_img: featImage3,
+  },
+];
+
 const ProductsFull = () => {
   const [category, setCategory] = useState("");
   const [sort, setSort] = useState("asc");
-  const [price, setPrice] = useState(0);
+  const [startPrice, setStartPrice] = useState(0);
+  const [endPrice, setEndPrice] = useState(10000);
 
   const uniqueProductCategory = useProductCategory(products, "product_type");
 
@@ -187,22 +216,24 @@ const ProductsFull = () => {
     alert(prodID);
   };
 
-  const handlePriceFilter = (e) => {
-    console.log(e);
-    setPrice(e[0]);
+  const handlePriceFilter = (e, state) => {
+    if (state === "start") {
+      setStartPrice(e[0]);
+    }
+    if (state === "end") {
+      setEndPrice(e[0]);
+    }
   };
 
   return (
     <Fragment>
       {/*   Fruits Shop Start */}
       <div className="flex flex-col w-full fruite py-5">
-        {/* <div className="flex justify-center items-start w-full fruite py-5"> */}
-
         <div className="lg:flex justify-center items-start lg:px-14 mx-auto fruite py-5 w-full gap-2">
           {/* Sidebar */}
           <div className="columns-1 rounded-lg lg:w-1/3 lg:min-h-screen px-5 lg:px-0 mx-5 lg:mx-0 my-5 lg:my-0">
             {/* Search Bar */}
-            <div className="flex input-group w-full relative columns-2 p-2">
+            <div className="flex input-group w-full relative p-2">
               <Input
                 type="search"
                 placeholder="Search Company"
@@ -236,32 +267,97 @@ const ProductsFull = () => {
             </div>
 
             {/* Price Slider */}
-            <div className="my-5">
+            <div className="my-5 p-2">
               <div className="mb-3">
-                <h4 className="mb-2 text-xl font-semibold text-shade">
-                  Price Range
-                </h4>
+                <h4 className="mb-2 text-3xl text-shade">Price Range</h4>
                 <div>
                   <div className="flex gap-5 items-center justify-between">
                     <p className="text-shade">Start</p>
                     <Slider
-                      defaultValue={[0, 100]}
-                      max={100}
-                      step={1}
-                      onValueChange={(e) => handlePriceFilter(e)}
+                      defaultValue={[startPrice]}
+                      max={9999}
+                      step={10}
+                      onValueChange={(e) => handlePriceFilter(e, "start")}
                     />
-                    <p className="text-shade">£{price}</p>
+                    <p className="text-shade">£{startPrice}</p>
                   </div>
                   <div className="flex gap-5 items-center justify-between">
                     <p className="text-shade">End</p>
                     <Slider
-                      defaultValue={[0, 100]}
-                      max={100}
-                      step={1}
-                      onValueChange={(e) => handlePriceFilter(e)}
+                      defaultValue={[endPrice]}
+                      max={10000}
+                      step={100}
+                      onValueChange={(e) => handlePriceFilter(e, "end")}
                     />
-                    <p className="text-shade">£{price}</p>
+                    <p className="text-shade">£{endPrice}</p>
                   </div>
+                </div>
+              </div>
+            </div>
+            <div className="hidden lg:block my-5 p-2">
+              <h4 className="mb-3 text-3xl text-shade">Featured products</h4>
+              {featuredProducts?.map((featuredProduct, index) => (
+                <div
+                  key={index + 1}
+                  className="flex items-center justify-start "
+                >
+                  <div
+                    className="rounded-md me-4"
+                    style={{ width: "100px", height: "100px;" }}
+                  >
+                    <img
+                      src={featuredProduct.product_img}
+                      className="img-fluid rounded"
+                      alt=""
+                    />
+                  </div>
+                  <div className="my-5 text-shade">
+                    <h6 className="mb-2 font-semibold">
+                      {featuredProduct.product_name}
+                    </h6>
+                    <div className="flex mb-2">
+                      {Array(featuredProduct?.rating)
+                        .fill()
+                        .map((rate, index) => (
+                          <FaStar key={index + 1} className="text-accent" />
+                        ))}
+                    </div>
+                    <div className="flex mb-2">
+                      <h5 className="font-bold me-2">2.99 $</h5>
+                      <h5 className="text-red-500 line-through font-bold">
+                        4.11 $
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              ))}
+              <div className="flex justify-center my-5 p-2">
+                <a
+                  href="#"
+                  className="flex justify-center items-center btn border border-accent hover:text-primary hover:bg-accent px-4 py-3 rounded-full text-secondary w-full"
+                >
+                  Vew More
+                </a>
+              </div>
+            </div>
+            <div className="hidden lg:block columns-1 p-2">
+              <div className="relative">
+                <img
+                  src={bannerImage}
+                  className="img-fluid w-full rounded-md"
+                  alt=""
+                />
+                <div
+                  className="absolute"
+                  style={{
+                    top: "50%",
+                    right: "10px",
+                    transform: "translateY(-50%)",
+                  }}
+                >
+                  <h3 className="text-3xl text-accent font-bold">
+                    Fresh <br /> Fruits <br /> Banner
+                  </h3>
                 </div>
               </div>
             </div>
