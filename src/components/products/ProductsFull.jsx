@@ -196,12 +196,110 @@ const featuredProducts = [
   },
 ];
 
+const ITEMS_PER_PAGE = 3; // Adjust this number as needed
+
 const ProductsFull = () => {
   const [category, setCategory] = useState("");
   const [sort, setSort] = useState("asc");
   const [startPrice, setStartPrice] = useState(0);
   const [endPrice, setEndPrice] = useState(10000);
 
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // Calculate the indices of the first and last item on the current page
+  const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
+  const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
+
+  // Get the items for the current page
+  const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Calculate total pages
+  const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
+
+  // pagination start
+  const renderPagination = () => {
+    const pageNumbers = [];
+    const pageBuffer = 1;
+
+    // Add the first page
+    pageNumbers.push(1);
+
+    // Add pages around the current page
+    let startPage = Math.max(currentPage - pageBuffer, 2);
+    let endPage = Math.min(currentPage + pageBuffer, totalPages - 1);
+
+    if (startPage > 2) {
+      pageNumbers.push("...");
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      pageNumbers.push(i);
+    }
+
+    if (endPage < totalPages - 1) {
+      pageNumbers.push("...");
+    }
+
+    // Add the last page
+    pageNumbers.push(totalPages);
+
+    return (
+      <Pagination>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious
+              role="button"
+              disabled={currentPage === 1}
+              label={currentPage === 1 ? "Begin" : "Previous"}
+              onClick={handlePreviousPage}
+            />
+          </PaginationItem>
+          {pageNumbers.map((number, index) =>
+            number === "..." ? (
+              <PaginationItem key={index}>
+                <PaginationEllipsis />
+              </PaginationItem>
+            ) : (
+              <PaginationItem
+                key={index}
+                className={number === currentPage ? "active" : ""}
+                onClick={() => handlePageChange(number)}
+              >
+                <PaginationLink role="button">{number}</PaginationLink>
+              </PaginationItem>
+            )
+          )}
+          <PaginationItem>
+            <PaginationNext
+              role="button"
+              disabled={currentPage === totalPages}
+              label={currentPage === totalPages ? "Last" : "Next"}
+              onClick={handleNextPage}
+            />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
+    );
+  };
+
+  // Pagination end
   const uniqueProductCategory = useProductCategory(products, "product_type");
 
   const filterProducts = (category) => {
@@ -411,91 +509,112 @@ const ProductsFull = () => {
                   <div className="columns-1">
                     {/* Main Products Card List */}
                     <div className="grid grid-cols-1 md:grid-cols-3 row gap-4 px-5 lg:px-0">
-                      {/* <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 row gap-4 px-5 lg:px-0"> */}
-                      {products &&
-                        products
-                          ?.filter((prodCategory) => {
-                            if (category === "all") {
-                              return prodCategory;
-                            }
-                            return prodCategory?.product_type.includes(
-                              category
-                            );
-                          })
-                          .slice(0, 8)
-                          .sort((a, b) => {
-                            if (sort === "asc") {
-                              return a.product_price - b.product_price;
-                            } else {
-                              return b.product_price - a.product_price;
-                            }
-                          })
-                          .map((product, index) => (
-                            <div
-                              key={index + 1}
-                              className="col-md-6 col-lg-4 col-xl-3"
-                            >
-                              <div className="rounded-lg relative fruite-item">
-                                <div className="fruite-img">
-                                  <img
-                                    src={product?.product_img}
-                                    className="max-w-full h-auto w-full rounded-t-md"
-                                    alt=""
-                                  />
-                                </div>
-                                <div
-                                  className="text-white bg-accent px-3 py-1 rounded-lg absolute"
-                                  style={{ top: "10px", left: "10px" }}
-                                >
-                                  {product?.product_type}
-                                  {/* Fruits */}
-                                </div>
-                                <div className="flex flex-col gap-2 p-4 border border-accent border-t-0 rounded-b-lg text-shade">
-                                  <h4 className="text-2xl font-bold">
-                                    {product?.product_name}
-                                  </h4>
-                                  <p className="">
-                                    {product?.product_description}
-                                  </p>
-                                  <div className="flex flex-col items-center gap-2">
-                                    <p className="text-2xl font-semibold mb-0 text-secondary">
-                                      ${product?.product_price}/ kg
+                      {
+                        /* {products &&
+                        products */
+                        currentItems &&
+                          currentItems
+                            ?.filter((prodCategory) => {
+                              if (category === "all") {
+                                return prodCategory;
+                              }
+                              return prodCategory?.product_type.includes(
+                                category
+                              );
+                            })
+                            .slice(0, 9)
+                            .sort((a, b) => {
+                              if (sort === "asc") {
+                                return a.product_price - b.product_price;
+                              } else {
+                                return b.product_price - a.product_price;
+                              }
+                            })
+                            .map((product, index) => (
+                              <div
+                                key={index + 1}
+                                className="col-md-6 col-lg-4 col-xl-3"
+                              >
+                                <div className="rounded-lg relative fruite-item">
+                                  <div className="fruite-img">
+                                    <img
+                                      src={product?.product_img}
+                                      className="max-w-full h-auto w-full rounded-t-md"
+                                      alt=""
+                                    />
+                                  </div>
+                                  <div
+                                    className="text-white bg-accent px-3 py-1 rounded-lg absolute"
+                                    style={{ top: "10px", left: "10px" }}
+                                  >
+                                    {product?.product_type}
+                                    {/* Fruits */}
+                                  </div>
+                                  <div className="flex flex-col gap-2 p-4 border border-accent border-t-0 rounded-b-lg text-shade">
+                                    <h4 className="text-2xl font-bold">
+                                      {product?.product_name}
+                                    </h4>
+                                    <p className="">
+                                      {product?.product_description}
                                     </p>
-                                    <button
-                                      href="#"
-                                      className="border border-accent rounded-full py-2 px-4 text-secondary hover:bg-accent hover:text-primary flex items-center gap-1 font-semibold transition-all duration-700 ease-in-out"
-                                      onClick={() =>
-                                        handleVote(product?.product_id)
-                                      }
-                                    >
-                                      <FaThumbsUp className="me-2 text-inherit" />
-                                      Vote
-                                    </button>
+                                    <div className="flex flex-col items-center gap-2">
+                                      <p className="text-2xl font-semibold mb-0 text-secondary">
+                                        ${product?.product_price}/ kg
+                                      </p>
+                                      <button
+                                        href="#"
+                                        className="border border-accent rounded-full py-2 px-4 text-secondary hover:bg-accent hover:text-primary flex items-center gap-1 font-semibold transition-all duration-700 ease-in-out"
+                                        onClick={() =>
+                                          handleVote(product?.product_id)
+                                        }
+                                      >
+                                        <FaThumbsUp className="me-2 text-inherit" />
+                                        Vote
+                                      </button>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
-                            </div>
-                          ))}
+                            ))
+                      }
                     </div>
                   </div>
                 </div>
                 <div className="columns-1 mt-10">
-                  <Pagination>
+                  {/* <Pagination>
                     <PaginationContent>
                       <PaginationItem>
-                        <PaginationPrevious href="#" />
+                        <PaginationPrevious
+                          // href="#"
+                          role="button"
+                          onClick={handlePreviousPage}
+                          disabled={currentPage === 1}
+                        />
                       </PaginationItem>
                       <PaginationItem>
-                        <PaginationLink href="#">1</PaginationLink>
+                        <PaginationLink href="#">{currentPage}</PaginationLink>
                       </PaginationItem>
+                       <PaginationItem>
+                        <PaginationLink href="#">2</PaginationLink>
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationLink href="#">3</PaginationLink>
+                      </PaginationItem> 
                       <PaginationItem>
                         <PaginationEllipsis />
                       </PaginationItem>
                       <PaginationItem>
-                        <PaginationNext href="#" />
+                        <PaginationNext
+                          // href="#"
+                          role="button"
+                          onClick={handleNextPage}
+                          disabled={currentPage === totalPages}
+                        />
                       </PaginationItem>
                     </PaginationContent>
-                  </Pagination>
+                  </Pagination> */}
+
+                  {renderPagination()}
                 </div>
               </div>
             </div>
@@ -508,3 +627,10 @@ const ProductsFull = () => {
 };
 
 export default ProductsFull;
+
+//  <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+//           Previous
+//         </button>
+//         <span>Page {currentPage} of {totalPages}</span>
+//         <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+//           Next
