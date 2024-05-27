@@ -279,7 +279,11 @@ const ProductsFull = () => {
             ) : (
               <PaginationItem
                 key={index}
-                className={number === currentPage ? "active" : ""}
+                className={
+                  number === currentPage
+                    ? "active bg-secondary/25 rounded-md"
+                    : ""
+                }
                 onClick={() => handlePageChange(number)}
               >
                 <PaginationLink role="button">{number}</PaginationLink>
