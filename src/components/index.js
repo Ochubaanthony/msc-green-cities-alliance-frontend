@@ -13,6 +13,7 @@ export { default as Hero } from "./header/Hero";
 
 export { default as Products } from "./products/Products";
 export { default as ProductsFull } from "./products/ProductsFull";
+export { default as ProductDetails } from "./products/ProductDetails";
 export { default as FeaturedProducts } from "./products/Featured";
 export { default as Services } from "./products/Services";
 export { default as Organics } from "./products/Organics";

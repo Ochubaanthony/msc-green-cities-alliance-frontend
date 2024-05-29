@@ -212,9 +212,9 @@ const featuredProducts = [
   },
 ];
 
-const ITEMS_PER_PAGE = 3; // Adjust this number as needed
+const ITEMS_PER_PAGE = 9; // Adjust this number as needed
 
-const ProductsFull = () => {
+const ProductDetails = () => {
   const [category, setCategory] = useState("");
   const [sort, setSort] = useState("asc");
   const [startPrice, setStartPrice] = useState(0);
@@ -347,7 +347,7 @@ const ProductsFull = () => {
     <Fragment>
       {/*   Fruits Shop Start */}
       <div className="flex flex-col w-full fruite py-5">
-        <div className="lg:flex justify-center items-start lg:px-14 mx-auto fruite py-5 w-full gap-2">
+        <div className="lg:flex flex-row-reverse justify-center items-start lg:px-14 mx-auto fruite py-5 w-full gap-2">
           {/* Sidebar */}
           <div className="columns-1 rounded-lg lg:w-1/3 lg:min-h-screen px-5 lg:px-0 mx-5 lg:mx-0 my-5 lg:my-0">
             {/* Search Bar */}
@@ -648,4 +648,4 @@ const ProductsFull = () => {
   );
 };
 
-export default ProductsFull;
+export default ProductDetails;
