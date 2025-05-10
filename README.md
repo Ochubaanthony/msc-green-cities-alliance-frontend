@@ -5,6 +5,8 @@
 ## How to run application 
 
 ** 1 Clone repo 
+sudo groupadd docker
+sudo usermod -aG docker $USER
 
 ** 2 Build the docker container using the code below
  `docker build -t gca-frontend-image .`
